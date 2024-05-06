@@ -58,6 +58,6 @@ pytest
 ```
 ## License
 
-Author(s) - Oliver Sjödin - Tobias Mattsson
+Author(s) - Oliver Sjödin, Adam Mützell, Tobias Mattsson
 
 Licensed under the [MIT License](LICENSE)
