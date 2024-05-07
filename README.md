@@ -33,6 +33,14 @@ All of the test can also be run using pytest.
 pytest
 
 ```
+
+An alternativ if you want to test multiple versions of python is 
+``` BASH
+tox
+
+```
+However, to do that you need to have the interpreters already installed. This can be done through the shell script found [here](./install_pyenv_ubuntu.sh). However, that is only for ubuntu right now. MacOS works, but windows does not right now for pyenv. If running tox you find test skipped, that is beacuse they are not installed. That can be done using the provided [Makefile](./Makefile). If the pyenv doesn't work with the script, run `source ~/.bashrc` or `exec "$SHELL"` to update the paths and restart the terminal.
+
 ## How to Use - DevContainer
 ### Prerequisites
 
@@ -56,6 +64,14 @@ All of the test can also be run using pytest.
 pytest
 
 ```
+
+An alternativ if you want to test multiple versions of python is 
+``` BASH
+tox
+
+```
+However, to do that you need to have the interpreters already installed. This can be done through the shell script found [here](./install_pyenv_ubuntu.sh). However, that is only for ubuntu right now. MacOS works, but windows does not right now for pyenv. If running tox you find test skipped, that is beacuse they are not installed. That can be done using the provided [Makefile](./Makefile). If the pyenv doesn't work with the script, run `source ~/.bashrc` or `exec "$SHELL"` to update the paths and restart the terminal.
+
 ## License
 
 Author(s) - Oliver Sjödin, Adam Mützell, Tobias Mattsson
