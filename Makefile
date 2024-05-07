@@ -14,7 +14,7 @@ python310:
 
 python39:
 	pyenv install 3.9
-	pyenv local 3.9pye
+	pyenv local 3.9
 
 find_pyenv_versions:
 	ls ~/.pyenv/versions/
