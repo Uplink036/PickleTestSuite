@@ -1,3 +1,7 @@
+install_pyenv_macos:
+	brew update
+	brew install pyenv
+
 install_pyenv_ubuntu:
 	curl https://pyenv.run | bash
 	echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
