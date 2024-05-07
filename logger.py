@@ -1,18 +1,28 @@
-import logging
 import pickle
+import os
 
-logger = logging.getLogger(__name__)
+def pickle_saver(data,folder,name,protocol=pickle.DEFAULT_PROTOCOL):
+    if not os.path.exists(f"logs/protocol_{protocol}/{folder}"):
+        print("Folder does not exist")
+        return
 
-def pickle_saver(data,func,protocol="DEFAULT_PROTOCOL"):
-    pickle_object = pickle.dumps(data, protocol=pickle.HIGHEST_PROTOCOL)
-    with open(f'{func}.pkl', 'wb') as f:
+    try:
+        pickle_object = pickle.dumps(data, protocol=protocol)
+    except Exception as error:
+        print(f"Error in pickling: {error}")
+        return
+
+    with open(f'logs/protocol_{protocol}/{folder}/{name}.pkl', 'wb') as f:
         f.write(pickle_object)
 
+def create_folder(folder_name):
+    for i in range(0,6):
+        os.mkdir(f"logs/protocol_{i}/{folder_name}")
 
 def test():
     data = {'a': 1, 'b': 2, 'c': 3}
-    pickle_saver(data,'test_pickle')
+    pickle_saver(data,"fuzzing","test_pickle")
 
 
-if __name__ == '__main__':
-    test()
+# if __name__ == '__main__':
+    #create_folder("fuzzing")
