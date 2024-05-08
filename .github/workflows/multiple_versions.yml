@@ -5,10 +5,6 @@ name: Manual Python Testing
 
 on: workflow_dispatch
 
-# Dynamically set the run name to include the type of branch (feature or bugfix), branch name, and the user
-run-name: "Manual Python Testing - ${{ matrix.os }} [@${{ github.actor }}]"
-
-
 permissions:
   contents: read
 
