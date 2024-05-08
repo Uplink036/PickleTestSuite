@@ -1,5 +1,6 @@
 # Project specific
 *.pickle
+logs/protocol_[0-9]/unpickled/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
