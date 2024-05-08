@@ -1,4 +1,8 @@
-import pickle 
+import pickle
+import os
+import pytest
+import platform
+import sys
 
 class TestPickle:
     def test_pickle(self):
@@ -8,3 +12,8 @@ class TestPickle:
         with open('data.pickle', 'rb') as f:
             data = pickle.load(f)
         assert data == {'a': 1, 'b': 2, 'c': 3}
+
+if __name__ == '__main__':
+    print(os.name)
+    print(sys.version)
+    pytest.main()
