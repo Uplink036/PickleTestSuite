@@ -23,10 +23,15 @@ class TestPickle:
             os_type = running_os_type
         if not version_number:
             version_number = running_version_number
-
+        
+        log_destination = f"logs/{os_type}/{version_number}/protocol_{protocol}"
+        # Check if the file exists
+        if not os.path.exists(log_destination):
+            # One can argue we should throw an error here.
+            return
         # Checking how many test cases we have for the protocol
         count = 0
-        for file in os.listdir(f"logs/{os_type}/{version_number}/protocol_{protocol}"):
+        for file in os.listdir(log_destination):
             count += 1
         count = count // 2
 
