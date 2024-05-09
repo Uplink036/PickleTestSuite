@@ -78,11 +78,14 @@ def unpack_and_compare_single_test(testnumber=0,protocol=pickle.DEFAULT_PROTOCOL
 def get_os_and_version():
     os_type = os.name
     if os_type == "posix":
-        os_type = "linux"
+        os_platform = sys.platform
+        if os_platform == "darwin":
+            os_type = "macOS"
+        else:
+            os_type = "linux"
     elif os_type == "nt":
         os_type = "windows"
-    else:
-        os_type = "macOS"
+
 
     version_number = re.search(r'(\d+\.\d+\.\d+)', sys.version).group(0)
 
