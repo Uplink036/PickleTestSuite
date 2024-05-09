@@ -1,3 +1,5 @@
 # Testing tools
 pytest
+hypothesis
 tox==4.15.0
+
