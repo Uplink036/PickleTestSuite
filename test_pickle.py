@@ -38,8 +38,8 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
@@ -50,7 +50,7 @@ class TestPickle:
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.booleans())
     def test_booleans(self, data):
@@ -59,8 +59,8 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
@@ -71,7 +71,7 @@ class TestPickle:
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.just(Ellipsis))
     def test_ellipsis(self, data):
@@ -80,19 +80,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.just(NotImplemented))
     def test_notimplemented(self, data):
@@ -101,19 +101,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.integers())
     def test_integers(self, data):
@@ -122,19 +122,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.floats())
     def test_floats(self, data):
@@ -143,19 +143,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.complex_numbers())
     def test_complex_numbers(self, data):
@@ -164,15 +164,15 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
@@ -185,8 +185,8 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
@@ -197,7 +197,7 @@ class TestPickle:
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.binary())
     def test_binary(self, data):
@@ -206,19 +206,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.lists(st.integers(min_value=0, max_value=255)))
     def test_bytearrays(self, data):
@@ -228,8 +228,8 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
@@ -249,19 +249,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.lists(elements=one_dim_random_strategy()))
     def test_lists(self, data):
@@ -270,20 +270,20 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-        
-    
+
+
     @seed(1234)
     @given(st.sets(elements=one_dim_random_strategy()))
     def test_sets(self, data):
@@ -292,19 +292,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.dictionaries(keys=st.text(), values=one_dim_random_strategy()))
     def test_dictionaries(self, data):
@@ -313,19 +313,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.recursive(one_dim_random_strategy(), lambda children: st.lists(children)))
     def test_recursive_lists(self, data):
@@ -334,19 +334,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(1234)
     @given(st.recursive(one_dim_random_strategy(), lambda children: st.frozensets(children)))
     def test_recursive_sets(self, data):
@@ -355,19 +355,19 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
-    
+
     @seed(3124)
     @given(st.recursive(one_dim_random_strategy(), lambda children: st.dictionaries(keys=st.text(), values=children)))
     def test_recursive_dictionaries(self, data):
@@ -376,15 +376,15 @@ class TestPickle:
             dump_a2 = dumps(data)
         except PicklingError as e:
             print(f"Error in pickling: {data} - error: {e}")
-            return 
-        
+            return
+
         try:
             h_a1 = sha256(dump_a1).hexdigest()
             h_a2 = sha256(dump_a2).hexdigest()
         except Exception as e:
             print(f"Error in hashing: {data} - error: {e}")
             return
-       
+
         assert h_a1 == h_a2
         if logger:
             save_unpickled_test(data)
@@ -397,7 +397,7 @@ class TestPickle:
             os_type = running_os_type
         if not version_number:
             version_number = running_version_number
-        
+
         log_destination = f"logs/{os_type}/{version_number}/protocol_{protocol}"
         # Check if the file exists
         if not os.path.exists(log_destination):
@@ -409,8 +409,13 @@ class TestPickle:
             count += 1
         count = count // 2
 
+        fail_list = []
+
         for i in range(count):
-            unpack_and_compare_single_test(i,protocol)
+            if not unpack_and_compare_single_test(i,protocol):
+                fail_list.append(i)
+        assert fail_list == []
+
 
 if __name__ == '__main__':
     pytest.main()

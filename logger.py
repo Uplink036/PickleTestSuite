@@ -31,7 +31,7 @@ def save_unpickled_test(data,protocol=pickle.DEFAULT_PROTOCOL):
     #Check that folder exist
     if not os.path.exists(f"logs/{os_type}/{version_number}/protocol_{protocol}"):
         print("Folder does not exist")
-        return
+        os.makedirs(f"logs/{os_type}/{version_number}/protocol_{protocol}")
 
     #Check if what is the next number to name the test
     testnumber = 0
@@ -54,6 +54,7 @@ def save_unpickled_test(data,protocol=pickle.DEFAULT_PROTOCOL):
     #Writes the data to the json file
     json.dump(data, open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.json', 'w'))
 
+
 def unpack_and_compare_single_test(testnumber=0,protocol=pickle.DEFAULT_PROTOCOL,os_type=False,version_number=False):
     '''Function used to unpack the pickle file and compare it to the json file. The function returns True if the files are the same'''
     #If os is not given, we will use the running os and version
@@ -73,7 +74,7 @@ def unpack_and_compare_single_test(testnumber=0,protocol=pickle.DEFAULT_PROTOCOL
     hash_data_new_py_version = sha256(pickle_object).hexdigest()
 
     #Checking if the hashes are the same
-    assert hash_data_prev_py_version == hash_data_new_py_version
+    return hash_data_prev_py_version == hash_data_new_py_version
 
 def get_os_and_version():
     os_type = os.name
@@ -120,6 +121,6 @@ def test_object():
 
 if __name__ == '__main__':
     clean_folder()
-    save_unpickled_test(test_object())
-    unpack_and_compare_single_test(0)
+    #save_unpickled_test(test_object())
+    #unpack_and_compare_single_test(0)
     #setup_folders()
