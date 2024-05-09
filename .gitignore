@@ -1,8 +1,7 @@
 # Project specific
 *.pickle
 .python-version
-logs/*/protocol_[0-9]/*.json
-logs/*/protocol_[0-9]/*.txt
+*csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
