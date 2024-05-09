@@ -1,3 +1,5 @@
+# https://medium.com/@ramanbazhanau/mastering-advanced-oop-concepts-in-python-advanced-class-features-a8790fa2b5a2
+
 class ProtectedAttributes:
     def __init__(self):
         self._protected = "This is protected"
