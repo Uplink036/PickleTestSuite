@@ -35,7 +35,7 @@ jobs:
     - name: Uploade to github
       uses: actions/upload-artifact@v4
       with:
-        name: Artifact - ${{ matrix.os }}
+        name: Artifact
         path: logs/*
         overwrite: true
 
