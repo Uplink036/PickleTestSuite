@@ -31,7 +31,7 @@ def save_unpickled_test(data,protocol=pickle.DEFAULT_PROTOCOL):
     #Check that folder exist
     if not os.path.exists(f"logs/{os_type}/{version_number}/protocol_{protocol}"):
         print("Folder does not exist")
-        return
+        os.makedirs(f"logs/{os_type}/{version_number}/protocol_{protocol}")
 
     #Check if what is the next number to name the test
     testnumber = 0
@@ -48,8 +48,8 @@ def save_unpickled_test(data,protocol=pickle.DEFAULT_PROTOCOL):
         return
 
     #Writes the data to the files
-    with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.txt', 'wb') as f:
-        f.write(hash_object.encode("utf-8"))
+    with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.txt', 'w') as f:
+        f.write(hash_object)
 
     #Writes the data to the json file
     json.dump(data, open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.json', 'w'))
@@ -64,8 +64,8 @@ def unpack_and_compare_single_test(testnumber=0,protocol=pickle.DEFAULT_PROTOCOL
         version_number = running_version_number
 
 
-    with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.txt', 'rb') as f:
-        hash_data_prev_py_version = f.read().decode("utf8")
+    with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.txt', 'r') as f:
+        hash_data_prev_py_version = f.read()
 
     #Taking the data from the jason and transforming it to a new hash
     json_data = json.load(open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.json', 'r'))
@@ -120,6 +120,6 @@ def test_object():
 
 if __name__ == '__main__':
     clean_folder()
-    save_unpickled_test(test_object())
-    unpack_and_compare_single_test(0)
+    #save_unpickled_test(test_object())
+    #unpack_and_compare_single_test(0)
     #setup_folders()
