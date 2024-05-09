@@ -1,28 +1,9 @@
 import pickle
 import os
 import json
-from hashlib import sha256
 import sys
 import re
 import csv
-
-def pickle_saver(data,folder,name,protocol=pickle.DEFAULT_PROTOCOL):
-    '''Function used to save the data as a pickle file in the specified folder. The data is pickled with the specified protocol.
-    If no protocol is specified, the default protocol 4 is used.'''
-
-    if not os.path.exists(f"logs/protocol_{protocol}/{folder}"):
-        print("Folder does not exist")
-        return
-
-    #Check if the pickle worked, else reporting error
-    try:
-        pickle_object = pickle.dumps(data, protocol=protocol)
-    except Exception as error:
-        print(f"Error in pickling/Hasing: {error}")
-        return
-
-    with open(f'logs/protocol_{protocol}/{folder}/{name}.pkl', 'wb') as f:
-        f.write(pickle_object)
 
 def save_unpickled_test(data, comment = "", protocol=pickle.DEFAULT_PROTOCOL):
     '''Function used to save the data as a pickle and json file in the unpickled folder. This is to be able to verifiy the pickle
