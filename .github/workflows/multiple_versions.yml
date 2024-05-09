@@ -32,3 +32,10 @@ jobs:
     - name: Test with tox
       run: |
         tox run-parallel
+    - name: Uploade to github
+      uses: actions/upload-artifact@v4
+      with:
+        name: Artifact - ${{ matrix.os }}
+        path: logs/*
+        overwrite: true
+
