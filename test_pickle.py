@@ -5,6 +5,8 @@ from pickle import dumps, PicklingError
 from hypothesis import settings, given, seed, strategies as st
 from hypothesis.strategies import composite
 from logger import save_unpickled_test,clean_folder
+from classes_functions import *
+
 
 settings.register_profile("first", max_examples=100)
 settings.load_profile("first")
@@ -423,16 +425,70 @@ class TestPickle:
 
             assert h_a1 == h_a2
             if logger:
-                save_unpickled_test(data=h_a1, comment="Recursive Dictionary")
+                save_unpickled_test(data=h_a1, comment="Recursive Dictionary", protocol=i)
     
-    def test_functions(self):
-        pass
+    @given(st.sampled_from([add_function, is_prime, tri_recursion, get_lengths]))
+    def test_functions(self, data):
+        for i in range(0, 6):
+            try:
+                dump_a1 = dumps(data, protocol=i)
+                dump_a2 = dumps(data, protocol=i)
+            except PicklingError as e:
+                print(f"Error in pickling: {data} - error: {e}")
+                raise ValueError(f"Error in pickling: {data} - error: {e}")
 
-    def test_classes(self):
-        pass
+            try:
+                h_a1 = sha256(dump_a1).hexdigest()
+                h_a2 = sha256(dump_a2).hexdigest()
+            except Exception as e:
+                print(f"Error in hashing: {data} - error: {e}")
+                raise ValueError(f"Error in pickling: {data} - error: {e}")
 
-    def test_instances(self):
-        pass
+            assert h_a1 == h_a2
+            if logger:
+                save_unpickled_test(data=h_a1, comment="Function", protocol=i)
+
+    @given(st.sampled_from([Student, Person, Temperature]))
+    def test_classes(self, data):
+        for i in range(0, 6):
+            try:
+                dump_a1 = dumps(data, protocol=i)
+                dump_a2 = dumps(data, protocol=i)
+            except PicklingError as e:
+                print(f"Error in pickling: {data} - error: {e}")
+                raise ValueError(f"Error in pickling: {data} - error: {e}")
+
+            try:
+                h_a1 = sha256(dump_a1).hexdigest()
+                h_a2 = sha256(dump_a2).hexdigest()
+            except Exception as e:
+                print(f"Error in hashing: {data} - error: {e}")
+                raise ValueError(f"Error in pickling: {data} - error: {e}")
+
+            assert h_a1 == h_a2
+            if logger:
+                save_unpickled_test(data=h_a1, comment="Class", protocol=i)
+
+    @given(st.sampled_from([Student("Tobias", 21), Person("Oliver", 21), Temperature(37)]))
+    def test_instances(self, data):
+        for i in range(0, 6):
+            try:
+                dump_a1 = dumps(data, protocol=i)
+                dump_a2 = dumps(data, protocol=i)
+            except PicklingError as e:
+                print(f"Error in pickling: {data} - error: {e}")
+                raise ValueError(f"Error in pickling: {data} - error: {e}")
+
+            try:
+                h_a1 = sha256(dump_a1).hexdigest()
+                h_a2 = sha256(dump_a2).hexdigest()
+            except Exception as e:
+                print(f"Error in hashing: {data} - error: {e}")
+                raise ValueError(f"Error in pickling: {data} - error: {e}")
+
+            assert h_a1 == h_a2
+            if logger:
+                save_unpickled_test(data=h_a1, comment="Instance", protocol=i)
 
 if __name__ == '__main__':
     clean_folder()
