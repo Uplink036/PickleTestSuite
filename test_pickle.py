@@ -423,10 +423,7 @@ class TestPickle:
         for i in range(count):
             if not unpack_and_compare_single_test(i,protocol):
                 fail_list.append(i)
-        if fail_list == []:
-            pytest.fail("This was unexpected") 
-        pytest.skip("Somethings wrong with dicts...")
-
+        assert fail_list == []
 
 if __name__ == '__main__':
     pytest.main()
