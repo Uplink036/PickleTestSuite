@@ -54,6 +54,7 @@ def save_unpickled_test(data,protocol=pickle.DEFAULT_PROTOCOL):
     #Writes the data to the json file
     json.dump(data, open(f'logs/{os_type}/{version_number}/protocol_{protocol}/test_{testnumber}.json', 'w'))
 
+
 def unpack_and_compare_single_test(testnumber=0,protocol=pickle.DEFAULT_PROTOCOL,os_type=False,version_number=False):
     '''Function used to unpack the pickle file and compare it to the json file. The function returns True if the files are the same'''
     #If os is not given, we will use the running os and version
@@ -73,7 +74,7 @@ def unpack_and_compare_single_test(testnumber=0,protocol=pickle.DEFAULT_PROTOCOL
     hash_data_new_py_version = sha256(pickle_object).hexdigest()
 
     #Checking if the hashes are the same
-    assert hash_data_prev_py_version == hash_data_new_py_version
+    return hash_data_prev_py_version == hash_data_new_py_version
 
 def get_os_and_version():
     os_type = os.name
