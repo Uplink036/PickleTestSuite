@@ -71,9 +71,11 @@ def setup_folders():
 def clean_folder(protocol=pickle.DEFAULT_PROTOCOL):
     '''Function used to clean the folder of all files'''
     os_type,version_number = get_os_and_version()
-
-    for file in os.listdir(f"logs/{os_type}/{version_number}/protocol_{protocol}"):
-        os.remove(f"logs/{os_type}/{version_number}/protocol_{protocol}/{file}")
+    try:
+        for file in os.listdir(f"logs/{os_type}/{version_number}/protocol_{protocol}"):
+            os.remove(f"logs/{os_type}/{version_number}/protocol_{protocol}/{file}")
+    except FileNotFoundError:
+        return
 
 
 def create_folder(folder_name):
