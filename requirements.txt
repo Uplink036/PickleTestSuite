@@ -1,5 +1,5 @@
 # Testing tools
-pytest
-hypothesis
-tox==4.15.0
+pytest==8
+hypothesis==6
+tox==4.15
 
