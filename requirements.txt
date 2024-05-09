@@ -1,5 +1,6 @@
 # Testing tools
 pytest==8
 hypothesis==6
+pandas==2
 tox==4.15
 
