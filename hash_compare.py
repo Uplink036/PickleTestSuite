@@ -22,3 +22,4 @@ def compare_all(protocol=pickle.DEFAULT_PROTOCOL):
 
 if __name__ == "__main__":
     compare_all()
+    print("No errors found!")

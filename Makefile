@@ -16,3 +16,6 @@ python39:
 
 find_pyenv_versions:
 	ls ~/.pyenv/versions/
+
+clean: ## Only works on UNIX systems
+	rm -r logs/
