@@ -1,11 +1,15 @@
-import pickle 
-from hashlib import sha256
-from pickle import loads, dumps, PicklingError
+import os
+import pickle
+import platform
+import sys
 import pytest
 import hypothesis
+from hashlib import sha256
+from pickle import loads, dumps, PicklingError
 from hypothesis import given, seed, strategies as st
 from hypothesis.strategies import composite
 from logger import save_unpickled_test
+from logger import unpack_and_compare_single_test, get_os_and_version
 
 logger = True
 
@@ -385,5 +389,29 @@ class TestPickle:
         if logger:
             save_unpickled_test(data)
 
-if __name__ == "__main__":
+    def test_pickle_from_other_version(self, protocol=pickle.DEFAULT_PROTOCOL,os_type=False,version_number=False):
+
+        #If os is not given, we will use the running os and version
+        running_os_type,running_version_number = get_os_and_version()
+        if not os_type:
+            os_type = running_os_type
+        if not version_number:
+            version_number = running_version_number
+        
+        log_destination = f"logs/{os_type}/{version_number}/protocol_{protocol}"
+        # Check if the file exists
+        if not os.path.exists(log_destination):
+            # One can argue we should throw an error here.
+            return
+        # Checking how many test cases we have for the protocol
+        count = 0
+        for file in os.listdir(log_destination):
+            count += 1
+        count = count // 2
+
+        for i in range(count):
+            unpack_and_compare_single_test(i,protocol)
+
+if __name__ == '__main__':
+    pytest.main()
     print(st.recursive(st.integers(), lambda children: st.frozensets(children)).example())
