@@ -1,4 +1,4 @@
-from add import add_function
+from add_function import add_function
 from inheritance import Student
 from is_prime import is_prime
 from person_class import Person
