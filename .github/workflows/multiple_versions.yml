@@ -38,6 +38,7 @@ jobs:
         tox -p all
     - name: Test across versions
       run: |
+        pip install pandas
         python3 hash_compare.py
     - name: Uploade to github
       uses: actions/upload-artifact@v4
