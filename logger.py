@@ -72,6 +72,7 @@ def test_object():
 
 
 if __name__ == '__main__':
+    pass
     #setup_folders()
     #clean_folder()
     #save_unpickled_test(test_object())
