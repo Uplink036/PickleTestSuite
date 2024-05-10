@@ -18,7 +18,7 @@ def save_unpickled_test(data, comment = "",json_data = "", protocol=pickle.DEFAU
     if os.path.exists(f"logs/{os_type}/{version_number}/protocol_{protocol}/data.csv"):
         with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/data.csv', 'a',newline='') as f:
             writer_object = csv.writer(f)
-            writer_object.writerow([data, comment])
+            writer_object.writerow([data, comment,json_data])
     else:
         with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/data.csv', 'w') as f:
             writer_object = csv.writer(f)
