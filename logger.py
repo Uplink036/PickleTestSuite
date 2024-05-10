@@ -16,7 +16,7 @@ def save_unpickled_test(data, comment = "", protocol=pickle.DEFAULT_PROTOCOL):
         os.makedirs(f"logs/{os_type}/{version_number}/protocol_{protocol}")
 
     if os.path.exists(f"logs/{os_type}/{version_number}/protocol_{protocol}/data.csv"):
-        with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/data.csv', 'a') as f:
+        with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/data.csv', 'a',newline='') as f:
             writer_object = csv.writer(f)
             writer_object.writerow([data, comment])
     else:
