@@ -21,5 +21,6 @@ def compare_all(protocol=pickle.DEFAULT_PROTOCOL):
 
 
 if __name__ == "__main__":
-    compare_all()
+    for protocol in range (0, pickle.HIGHEST_PROTOCOL):
+        compare_all(protocol)
     print("No errors found!")
