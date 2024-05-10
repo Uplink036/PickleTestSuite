@@ -1,6 +1,6 @@
 import pickle
 import pytest
-import random 
+import random
 from hashlib import sha256
 from pickle import dumps, PicklingError
 from hypothesis import settings, given, seed, strategies as st
@@ -161,7 +161,7 @@ class TestPickle:
 
             assert h_a1 == h_a2
             if logger:
-                save_unpickled_test(data=h_a1, comment="Integer", protocol=i)
+                save_unpickled_test(data=h_a1, comment="Integer",json_data = str(data), protocol=i)
 
     @seed(6)
     @given(st.floats(allow_nan=False))
@@ -183,7 +183,7 @@ class TestPickle:
 
             assert h_a1 == h_a2
             if logger:
-                save_unpickled_test(h_a1, comment="Float", protocol=i)
+                save_unpickled_test(h_a1, comment="Float",json_data = str(data), protocol=i)
 
     @seed(7)
     @given(st.complex_numbers(allow_nan=False))
@@ -470,7 +470,7 @@ class TestPickle:
             assert h_a1 == h_a2
             if logger:
                 save_unpickled_test(data=h_a1, comment="Class", protocol=i)
-    
+
     @seed(20)
     @given(st.sampled_from([Student("Tobias", 21), Person("Oliver", 21), Temperature(37)]))
     def test_instances(self, data):
@@ -492,7 +492,7 @@ class TestPickle:
             assert h_a1 == h_a2
             if logger:
                 save_unpickled_test(data=h_a1, comment="Instance", protocol=i)
-    
+
     def test_floating_point(self):
         '''Test to see how well the pickle handles extreme floatingpoint accuracy'''
         getcontext().prec = 309

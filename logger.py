@@ -5,7 +5,7 @@ import sys
 import re
 import csv
 
-def save_unpickled_test(data, comment = "", protocol=pickle.DEFAULT_PROTOCOL):
+def save_unpickled_test(data, comment = "",json_data = "", protocol=pickle.DEFAULT_PROTOCOL,):
     '''Function used to save the data as a pickle and json file in the unpickled folder. This is to be able to verifiy the pickle
     data over different verisons and be able to compare to the json file.'''
     os_type,version_number = get_os_and_version()
@@ -22,7 +22,8 @@ def save_unpickled_test(data, comment = "", protocol=pickle.DEFAULT_PROTOCOL):
     else:
         with open(f'logs/{os_type}/{version_number}/protocol_{protocol}/data.csv', 'w') as f:
             writer_object = csv.writer(f)
-            writer_object.writerow([data, comment])
+            writer_object.writerow([data, comment,json_data])
+
 
 def get_os_and_version():
     os_type = os.name
