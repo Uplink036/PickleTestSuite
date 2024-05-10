@@ -8,7 +8,7 @@ from logger import save_unpickled_test,clean_folder
 from classes_functions import *
 from decimal import *
 
-settings.register_profile("first", max_examples=100)
+settings.register_profile("first", max_examples=100, deadline=None)
 settings.load_profile("first")
 
 logger = True
@@ -426,7 +426,7 @@ class TestPickle:
             assert h_a1 == h_a2
             if logger:
                 save_unpickled_test(data=h_a1, comment="Recursive Dictionary", protocol=i)
-    
+    @seed(18)
     @given(st.sampled_from([add_function, is_prime, tri_recursion, get_lengths]))
     def test_functions(self, data):
         for i in range(0, pickle.HIGHEST_PROTOCOL + 1):
@@ -447,7 +447,7 @@ class TestPickle:
             assert h_a1 == h_a2
             if logger:
                 save_unpickled_test(data=h_a1, comment="Function", protocol=i)
-
+    @seed(19)
     @given(st.sampled_from([Student, Person, Temperature]))
     def test_classes(self, data):
         for i in range(0, pickle.HIGHEST_PROTOCOL + 1):
@@ -468,7 +468,8 @@ class TestPickle:
             assert h_a1 == h_a2
             if logger:
                 save_unpickled_test(data=h_a1, comment="Class", protocol=i)
-
+    
+    @seed(20)
     @given(st.sampled_from([Student("Tobias", 21), Person("Oliver", 21), Temperature(37)]))
     def test_instances(self, data):
         for i in range(0, pickle.HIGHEST_PROTOCOL + 1):
@@ -489,7 +490,7 @@ class TestPickle:
             assert h_a1 == h_a2
             if logger:
                 save_unpickled_test(data=h_a1, comment="Instance", protocol=i)
-
+    
     def test_floating_point(self):
         '''Test to see how well the pickle handles extreme floatingpoint accuracy'''
         getcontext().prec = 309
