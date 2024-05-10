@@ -17,6 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
+        architecture: [x86, x64]
 
     steps:
     - uses: actions/checkout@v4
@@ -38,14 +39,14 @@ jobs:
     - name: Test with tox
       run: |
         tox -p all
-    - name: Test across versions
-      run: |
-        pip install pandas
-        python3 hash_compare.py
     - name: Uploade to github
       uses: actions/upload-artifact@v4
       with:
         name: Artifact - ${{ matrix.os }}
         path: logs/*
         overwrite: true
+    - name: Test across versions
+      run: |
+        pip install pandas
+        python3 hash_compare.py
 
