@@ -6,7 +6,7 @@ from hypothesis import settings, given, seed, strategies as st
 from hypothesis.strategies import composite
 from logger import save_unpickled_test,clean_folder
 from classes_functions import *
-
+from decimal import *
 
 settings.register_profile("first", max_examples=100)
 settings.load_profile("first")
@@ -489,6 +489,20 @@ class TestPickle:
             assert h_a1 == h_a2
             if logger:
                 save_unpickled_test(data=h_a1, comment="Instance", protocol=i)
+
+    def test_floating_point(self):
+        '''Test to see how well the pickle handles extreme floatingpoint accuracy'''
+        getcontext().prec = 309
+        a = Decimal(2)**Decimal(0.5)
+        b = Decimal(2.2250738585072014e-308)
+        c = a+b
+        c1 = dumps(a)
+        s1 = sha256(c1).hexdigest()
+
+        c2 = dumps(c)
+        s2 = sha256(c2).hexdigest()
+
+        assert s1 != s2
 
 if __name__ == '__main__':
     clean_folder()
