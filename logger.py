@@ -37,7 +37,6 @@ def get_os_and_version():
 
 
     version_number = re.search(r'(\d+\.\d+\.\d+)', sys.version).group(0)
-
     return os_type,version_number
 
 def setup_folders():
@@ -52,9 +51,12 @@ def setup_folders():
 def clean_folder(protocol=pickle.DEFAULT_PROTOCOL):
     '''Function used to clean the folder of all files'''
     os_type,version_number = get_os_and_version()
+
     try:
         for file in os.listdir(f"logs/{os_type}/{version_number}/protocol_{protocol}"):
             os.remove(f"logs/{os_type}/{version_number}/protocol_{protocol}/{file}")
+        with open(f"logs/{os_type}/{version_number}/protocol_{protocol}/data.csv", 'w') as fp:
+            pass
     except FileNotFoundError:
         return
 
@@ -70,7 +72,8 @@ def test_object():
 
 
 if __name__ == '__main__':
+    #setup_folders()
     #clean_folder()
-    save_unpickled_test(test_object())
+    #save_unpickled_test(test_object())
     #unpack_and_compare_single_test(0)
     #setup_folders()
