@@ -496,10 +496,10 @@ class TestPickle:
         a = Decimal(2)**Decimal(0.5)
         b = Decimal(2.2250738585072014e-308)
         c = a+b
-        c1 = pickle.dumps(a)
+        c1 = dumps(a)
         s1 = sha256(c1).hexdigest()
 
-        c2 = pickle.dumps(c)
+        c2 = dumps(c)
         s2 = sha256(c2).hexdigest()
 
         assert s1 != s2
