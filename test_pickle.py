@@ -325,7 +325,7 @@ class TestPickle:
 
             assert h_a1 == h_a2
             if logger:
-                save_unpickled_test(data=h_a1, comment="Set", protocol=i)
+                save_unpickled_test(data=h_a1, comment="Set",json_data = str(data), protocol=i)
 
     @given(st.dictionaries(keys=st.text(), values=one_dim_random_strategy()))
     def test_dictionaries(self, data):
