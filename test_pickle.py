@@ -409,7 +409,7 @@ class TestPickle:
 
             assert h_a1 == h_a2
             if logger:
-                save_unpickled_test(data=h_a1, comment="Recursive Dictionary", protocol=i))
+                save_unpickled_test(data=h_a1, comment="Recursive Dictionary", protocol=i)
     
     @given(st.sampled_from([add_function, is_prime, tri_recursion, get_lengths]))
     def test_functions(self, data):
@@ -430,7 +430,7 @@ class TestPickle:
 
             assert h_a1 == h_a2
             if logger:
-                save_unpickled_test(data=h_a1, comment="Function", protocol=i))
+                save_unpickled_test(data=h_a1, comment="Function", protocol=i)
     
     @given(st.sampled_from([Student, Person, Temperature]))
     def test_classes(self, data):
