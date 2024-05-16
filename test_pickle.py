@@ -497,7 +497,7 @@ class TestPickle:
     def test_floating_point(self):
         '''Test to see how well the pickle handles extreme floatingpoint accuracy'''
         getcontext().prec = 309
-        a = Decimal(2)**Decimal(0.5)
+        a = Decimal(1e-308)
         b = Decimal(2.2250738585072014e-308)
         c = a+b
         c1 = dumps(a)
