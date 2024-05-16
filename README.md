@@ -72,6 +72,10 @@ tox
 ```
 However, to do that you need to have the interpreters already installed. This can be done through the shell script found [here](./install_pyenv_ubuntu.sh). However, that is only for ubuntu right now. MacOS works, but windows does not right now for pyenv. If running tox you find test skipped, that is beacuse they are not installed. That can be done using the provided [Makefile](./Makefile). If the pyenv doesn't work with the script, run `source ~/.bashrc` or `exec "$SHELL"` to update the paths and restart the terminal.
 
+## Running workflows
+
+This project has many workflows and to some extent is based upon them. There is one base workflow that will run on any commit that is coming into main. THe other one is a bit more interesting however. This is the workflow that runs our tests over multiple versions and OS automatically. However for it to run, we need to start it ourselves. This can be done on github by clicking on the *[Actions](https://github.com/Uplink036/PickleTestSuite/actions)* tab, 
+
 ## License
 
 Author(s) - Oliver Sjödin, Adam Mützell, Tobias Mattsson
